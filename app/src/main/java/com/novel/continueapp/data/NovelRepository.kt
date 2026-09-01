@@ -64,8 +64,6 @@ class NovelRepository(context: Context) {
         val apiKey = settingsRepo.apiKey.first()
         val model = settingsRepo.model.first()
         val temperature = settingsRepo.temperature.first()
-        val maxTokens = settingsRepo.maxTokens.first()
-        val lengthHint = settingsRepo.lengthHint.first()
         val styleHint = settingsRepo.styleHint.first()
 
         return apiClient.continueNovel(
@@ -74,8 +72,6 @@ class NovelRepository(context: Context) {
             apiKey = apiKey,
             model = model,
             temperature = temperature,
-            maxTokens = maxTokens,
-            lengthHint = lengthHint,
             styleHint = styleHint
         )
     }
