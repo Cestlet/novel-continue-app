@@ -739,27 +739,26 @@ private fun SettingsTab(viewModel: MainViewModel) {
                     valueRange = 0f..2f,
                     steps = 19
                 )
-                Spacer(Modifier.height(6.dp))
-                Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                    Text("最大输出 Tokens", style = MaterialTheme.typography.bodyMedium)
-                    StatusChip("${viewModel.maxTokens}", false)
+                Spacer(Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Outlined.AutoAwesome,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.width(6.dp))
+                    Text(
+                        text = "续写长度与输出上限：不限",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
-                Slider(
-                    value = viewModel.maxTokens.toFloat(),
-                    onValueChange = { viewModel.maxTokens = it.toInt() },
-                    valueRange = 256f..8192f,
-                    steps = 30
-                )
-                Spacer(Modifier.height(6.dp))
-                Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                    Text("期望续写字数", style = MaterialTheme.typography.bodyMedium)
-                    StatusChip("${viewModel.lengthHint}", false)
-                }
-                Slider(
-                    value = viewModel.lengthHint.toFloat(),
-                    onValueChange = { viewModel.lengthHint = it.toInt() },
-                    valueRange = 200f..3000f,
-                    steps = 27
+                Text(
+                    text = "不限制字数与 token，按需输出全部内容。",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 2.dp)
                 )
                 Spacer(Modifier.height(8.dp))
                 OutlinedTextField(
