@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">小说续写</string>
+    <string name="accessibility_desc">读取屏幕上的小说文字，用于自动识别与续写</string>
+</resources>
