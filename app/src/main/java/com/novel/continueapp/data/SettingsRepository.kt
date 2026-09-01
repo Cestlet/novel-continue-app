@@ -16,8 +16,6 @@ class SettingsRepository(private val context: Context) {
     val apiKey: Flow<String> = context.dataStore.data.map { it[KEY_API_KEY] ?: "" }
     val model: Flow<String> = context.dataStore.data.map { it[KEY_MODEL] ?: DEFAULT_MODEL }
     val temperature: Flow<Float> = context.dataStore.data.map { it[KEY_TEMPERATURE] ?: 1.0f }
-    val maxTokens: Flow<Int> = context.dataStore.data.map { it[KEY_MAX_TOKENS] ?: 2048 }
-    val lengthHint: Flow<Int> = context.dataStore.data.map { it[KEY_LENGTH_HINT] ?: 800 }
     val styleHint: Flow<String> = context.dataStore.data.map { it[KEY_STYLE_HINT] ?: "" }
 
     // ── 功能开关 ──
@@ -37,8 +35,6 @@ class SettingsRepository(private val context: Context) {
     suspend fun saveApiKey(value: String) { context.dataStore.edit { it[KEY_API_KEY] = value } }
     suspend fun saveModel(value: String) { context.dataStore.edit { it[KEY_MODEL] = value } }
     suspend fun saveTemperature(value: Float) { context.dataStore.edit { it[KEY_TEMPERATURE] = value } }
-    suspend fun saveMaxTokens(value: Int) { context.dataStore.edit { it[KEY_MAX_TOKENS] = value } }
-    suspend fun saveLengthHint(value: Int) { context.dataStore.edit { it[KEY_LENGTH_HINT] = value } }
     suspend fun saveStyleHint(value: String) { context.dataStore.edit { it[KEY_STYLE_HINT] = value } }
     suspend fun saveOcrFallback(enabled: Boolean) { context.dataStore.edit { it[KEY_OCR_FALLBACK] = enabled } }
     suspend fun saveAutoCapture(enabled: Boolean) { context.dataStore.edit { it[KEY_AUTO_CAPTURE] = enabled } }
@@ -50,8 +46,6 @@ class SettingsRepository(private val context: Context) {
         private val KEY_API_KEY = stringPreferencesKey("api_key")
         private val KEY_MODEL = stringPreferencesKey("model")
         private val KEY_TEMPERATURE = floatPreferencesKey("temperature")
-        private val KEY_MAX_TOKENS = intPreferencesKey("max_tokens")
-        private val KEY_LENGTH_HINT = intPreferencesKey("length_hint")
         private val KEY_STYLE_HINT = stringPreferencesKey("style_hint")
         private val KEY_OCR_FALLBACK = booleanPreferencesKey("ocr_fallback")
         private val KEY_AUTO_CAPTURE = booleanPreferencesKey("auto_capture")
